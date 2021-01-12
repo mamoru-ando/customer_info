@@ -1,0 +1,2 @@
+class Apprearance < ApplicationRecord
+end
