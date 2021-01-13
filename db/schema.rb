@@ -12,12 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_01_12_120237) do
 
-  create_table "apprearances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "appearances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
     t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_apprearances_on_customer_id"
+    t.index ["customer_id"], name: "index_appearances_on_customer_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 2021_01_12_120237) do
     t.string "address"
     t.string "visit"
     t.text "memo"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_120237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "apprearances", "customers"
+  add_foreign_key "appearances", "customers"
+  add_foreign_key "customers", "users"
   add_foreign_key "orders", "customers"
 end
