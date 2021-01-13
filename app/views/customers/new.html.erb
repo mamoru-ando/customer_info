@@ -2,6 +2,8 @@
 
 <%= form_with model: @customer, local: true do |f| %>
 
+    <%= render 'shared/error_messages', model: f.object %>
+
     <div class='form-text-wrap'>
       <label class="form-text">お名前</label>
       <span class="indispensable">必須</span>

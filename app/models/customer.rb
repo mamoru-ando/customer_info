@@ -5,4 +5,9 @@ class Customer < ApplicationRecord
   has_many :orders
   has_one :appearance
   belongs_to :user
+
+  with_options presence: true do
+    validates :last_name
+    validates :first_name
+  end
 end

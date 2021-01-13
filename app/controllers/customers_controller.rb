@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    binding.pry
+    # binding.pry
     if @customer.valid?
       @customer.save
       redirect_to action: :index
