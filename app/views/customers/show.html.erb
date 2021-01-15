@@ -1,0 +1,64 @@
+<h1>顧客情報詳細ページ</h1>
+<%= link_to 'トップページ', root_path %>
+<%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id) %>
+
+
+<div>
+  <label>お名前</label>
+  <%= @customer.last_name %>
+  <%= @customer.first_name %>
+</div>
+
+<div>
+  <label>お名前(ふりがな)</label>
+  <%= @customer.last_name_kana %>
+  <%= @customer.first_name_kana %>
+</div>
+
+<div>
+  <label>性別</label>
+  <%= @customer.sex.name %>
+</div>
+
+<div>
+  <label>電話番号1</label>
+  <%= @customer.tell1 %>
+</div>
+
+<div>
+  <label>電話番号2</label>
+  <%= @customer.tell2 %>
+</div>
+
+<div>
+  <label>メールアドレス</label>
+  <%= @customer.email %>
+</div>
+
+<div>
+  <label>住所</label>
+  <%= @customer.address %>
+</div>
+
+<div>
+  <label>来店回数</label>
+  <%# <%= @customer. %>
+</div>
+
+<div>
+  <label>メモ</label>
+  <%= @customer.memo %>
+</div>
+
+<div>
+  <label>外見的特徴</label>
+  <%# <%= @customer. %>
+</div>
+
+<p>オーダー一覧</p>
+
+<% if @orders %>
+  <% @orders.each do |order| %>
+  <%= order.date %>
+  <% end %>
+<% end %>

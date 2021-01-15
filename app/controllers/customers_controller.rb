@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
 
   def index
-
+    @customers = Customer.all
   end
 
   def new
@@ -17,6 +17,11 @@ class CustomersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @customer = Customer.find(params[:id])
+    # @oreders = Order.all
   end
 
   private
