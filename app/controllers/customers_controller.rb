@@ -10,7 +10,6 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    # binding.pry
     if @customer.valid?
       @customer.save
       redirect_to action: :index
@@ -20,8 +19,9 @@ class CustomersController < ApplicationController
   end
 
   def show
+  # binding.pry
     @customer = Customer.find(params[:id])
-    # @oreders = Order.all
+    @orders = Order.where(customer_id: @customer.id).order("created_at DESC")
   end
 
   private

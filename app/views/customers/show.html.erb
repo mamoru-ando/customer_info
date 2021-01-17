@@ -1,6 +1,7 @@
 <h1>顧客情報詳細ページ</h1>
 <%= link_to 'トップページ', root_path %>
 <%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id) %>
+<%= link_to '顧客情報編集', edit_customer_path(@customer.id) %>
 
 
 <div>
@@ -56,9 +57,20 @@
 </div>
 
 <p>オーダー一覧</p>
-
-<% if @orders %>
+<div>
+<%# <% binding.pry %>
+<% if @orders.present? %>
   <% @orders.each do |order| %>
-  <%= order.date %>
+    <div>
+      <%= order.date %>
+      <%= order.people %>
+      <%= order.table %>
+      <%= order.drink %>
+      <%= order.food %>
+      <%= order.pay %>
+    </div>
   <% end %>
+<% else %>
+  <p>*** オーダー情報はありません ***</p>
 <% end %>
+</div>
