@@ -86,6 +86,7 @@
         <td><%= order.pay.to_s(:delimited) %>円</td>
       </tr>
       <%= link_to '編集', edit_customer_order_path(@customer.id, order.id) %>
+      <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete %>
     </div>
   <% end %>
 <% else %>
