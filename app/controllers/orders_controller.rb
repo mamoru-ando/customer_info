@@ -30,9 +30,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    # binding.pry
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to customer_path(@order.customer.id)
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:date, :people, :table, :drink, :food, :pay).merge(customer_id: params[:customer_id])
+    params.require(:order).permit(:date, :people, :table, :drink, :food, :pay, :order_memo).merge(customer_id: params[:customer_id])
   end
 end
