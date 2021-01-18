@@ -1,0 +1,41 @@
+<p>オーダー編集ページ</p>
+
+<%= form_with model: [@customer, @order], url: customer_order_path, method: :patch, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+
+<div>
+  <%= f.label '来店日', class: 'control-label' %>
+  <%= f.date_field :date, class: 'form-control' %>
+</div>
+
+<div>
+  <label>来店人数</label>
+  <%= f.text_field :people, placeholder:"例）3" %>名
+</div>
+
+<div>
+  <label>テーブル番号</label>
+  <%= f.text_field :table, placeholder:"例）A5" %>
+</div>
+
+<div>
+  <label>ドリンクオーダー</label>
+  <%= f.text_area :drink, placeholder:"例）ビール4" %>
+</div>
+
+<div>
+  <label>フードオーダー</label>
+  <%= f.text_area :food, placeholder:"例）ポモドーロ1" %>
+</div>
+
+<div>
+  <label>支払い金額</label>
+  <%= f.text_field :pay, placeholder:"例）12000" %>円
+</div>
+
+    <div class="sell-btn-contents">
+      <%= f.submit "編集する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', :back, class:"back-btn" %>
+    </div>
+
+<% end %>

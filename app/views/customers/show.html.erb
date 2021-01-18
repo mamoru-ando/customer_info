@@ -58,16 +58,34 @@
 
 <p>オーダー一覧</p>
 <div>
-<%# <% binding.pry %>
 <% if @orders.present? %>
   <% @orders.each do |order| %>
     <div>
-      <%= order.date %>
-      <%= order.people %>
-      <%= order.table %>
-      <%= order.drink %>
-      <%= order.food %>
-      <%= order.pay %>
+      <tr>
+        <th >来店日</th>
+        <td><%= order.date %></td>
+      </tr>
+      <tr>
+        <th>人数</th>
+        <td><%= order.people %>名</td>
+      </tr>
+      <tr>
+        <th>テーブル番号</th>
+        <td><%= order.table %></td>
+      </tr>
+      <tr>
+        <th>ドリンクオーダー</th>
+        <td><%= order.drink %></td>
+      </tr>
+      <tr>
+        <th>フードオーダー</th>
+        <td><%= order.food %></td>
+      </tr>
+      <tr>
+        <th>会計金額</th>
+        <td><%= order.pay.to_s(:delimited) %>円</td>
+      </tr>
+      <%= link_to '編集', edit_customer_order_path(@customer.id, order.id) %>
     </div>
   <% end %>
 <% else %>
