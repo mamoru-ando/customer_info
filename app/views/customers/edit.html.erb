@@ -59,6 +59,13 @@
       <%= f.text_area :memo, class:"input-name", id:"last-name-kana", placeholder:"" %>
     </div>
 
+    <div class='form-text-wrap'>
+      <label class="form-text">外見情報</label>
+    </div>
+    <div >
+      <%= f.text_area :appearance, class:"input-name", id:"last-name-kana", placeholder:"" %>
+    </div>
+
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
       <%=link_to 'もどる', customer_path, class:"back-btn" %>

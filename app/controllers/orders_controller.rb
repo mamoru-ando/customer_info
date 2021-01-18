@@ -16,6 +16,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    # binding.pry
+    if @order.update(order_params)
+      redirect_to customer_path(@order.customer.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def order_params
