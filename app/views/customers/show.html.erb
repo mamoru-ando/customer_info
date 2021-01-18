@@ -2,6 +2,7 @@
 <%= link_to 'トップページ', root_path %>
 <%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id) %>
 <%= link_to '顧客情報編集', edit_customer_path(@customer.id) %>
+<%= link_to '顧客削除', customer_path(@customer.id), method: :delete %>
 
 
 <div>
