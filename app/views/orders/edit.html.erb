@@ -33,6 +33,11 @@
   <%= f.text_field :pay, placeholder:"例）12000" %>円
 </div>
 
+<div>
+  <label>メモ</label>
+  <%= f.text_area :ordre_memo %>
+</div>
+
     <div class="sell-btn-contents">
       <%= f.submit "編集する" ,class:"sell-btn" %>
       <%=link_to 'もどる', :back, class:"back-btn" %>

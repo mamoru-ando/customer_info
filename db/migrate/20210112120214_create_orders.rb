@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :drink
       t.string :food
       t.integer :pay,    null: false
+      t.text :order_memo
       t.references :customer, foreign_key: true
 
       t.timestamps

@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_120237) do
     t.string "drink"
     t.string "food"
     t.integer "pay", null: false
+    t.text "order_memo"
     t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
