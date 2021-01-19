@@ -12,6 +12,7 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
       t.string :address
       t.string :visit
       t.text :memo
+      t.text :appearance
       t.references :user, foreign_key: true
 
       t.timestamps

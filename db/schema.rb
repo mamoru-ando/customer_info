@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_120237) do
-
-  create_table "appearances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text"
-    t.bigint "customer_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_appearances_on_customer_id"
-  end
+ActiveRecord::Schema.define(version: 2021_01_12_120214) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -32,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_120237) do
     t.string "address"
     t.string "visit"
     t.text "memo"
+    t.text "appearance"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,7 +58,6 @@ ActiveRecord::Schema.define(version: 2021_01_12_120237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appearances", "customers"
   add_foreign_key "customers", "users"
   add_foreign_key "orders", "customers"
 end
