@@ -1,7 +1,11 @@
 class CustomersController < ApplicationController
 
+  before_action :search_customer, only: [:index, :search]
+
   def index
     @customers = Customer.all
+    # @keyword = Customer.ransack(params[:q])
+    # @customers = @keyword.result
   end
 
   def new
@@ -43,11 +47,20 @@ class CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results  = @keyword.result#.include(:customer)
+    # binding.pry
+  end
+
   private
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :sex_id, 
-                                     :tell1, :tell2, :email, :address, :memo).merge(user_id: current_user.id)
+                                     :tell1, :tell2, :email, :address, :memo, :appearance).merge(user_id: current_user.id)
+  end
+
+  def search_customer
+    @keyword = Customer.ransack(params[:q])
   end
 
 end

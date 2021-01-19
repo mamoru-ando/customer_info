@@ -1,0 +1,15 @@
+<h1>検索結果</h1>
+
+<div>
+  <% @results.each do |customer| %>
+      <%= link_to customer_path(customer.id) do %>
+        <div>
+          <%= customer.last_name %>
+          <%= customer.first_name %>
+          <%= customer.tell1 %>
+        </div>
+      <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'トップページ', root_path %>

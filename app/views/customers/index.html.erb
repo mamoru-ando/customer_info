@@ -13,6 +13,12 @@
 <div>
   <%= link_to '顧客情報新規登録', new_customer_path %>
 </div>
+
+<%= search_form_for @keyword, url: search_customers_path, class: "search-form" do |f| %>
+  <%= f.text_field :last_name_or_first_name_or_memo_or_appearance_cont_any, placeholder: "顧客を検索する", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
+
 <div>
   <% if @customers.present? %>
     <% @customers.each do |customer| %>
