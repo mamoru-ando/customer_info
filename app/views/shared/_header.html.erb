@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid bg-info text-white">
+      <div class="navbar-header">
+        <h1 class="navbar-brand">顧客情報管理アプリ</h1>
+      </div>
+      <div class="navbar-text navbar-right text-white">
+        <% if user_signed_in? %>
+          <%= current_user.name %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete%>
+          <%= link_to 'ユーザー編集', edit_user_registration_path %>
+        <% else %>
+          <%= link_to '新規登録', new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
