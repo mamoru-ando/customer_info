@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-
   before_action :search_customer, only: [:index, :search]
 
   def index
@@ -51,7 +50,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :sex_id, 
+    params.require(:customer).permit(:name, :name_kana, :sex_id, 
                                      :tell1, :tell2, :email, :address, :memo, :appearance).merge(user_id: current_user.id)
   end
 

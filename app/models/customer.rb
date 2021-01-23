@@ -5,8 +5,5 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   belongs_to :user
 
-  with_options presence: true do
-    validates :last_name
-    validates :first_name
-  end
+  validates :name, presence: true
 end

@@ -1,7 +1,7 @@
 
     <div>
       <%= search_form_for @keyword, url: search_customers_path do |f| %>
-        <%= f.search_field :last_name_or_first_name_or_memo_cont_any, placeholder: "顧客検索", class: "search-input" %>
+        <%= f.search_field :name_or_memo_or_appearance_cont_any, placeholder: "顧客検索", class: "search-input" %>
         <button type="submit", class="btn btn-primary btn-sm mr-4">検索</button>
         <%= f.label :appearance_cont, '外見の特徴' %>
         <%= f.search_field :appearance_cont_any, placeholder: "外見の特徴を検索", class: "search-input" %>

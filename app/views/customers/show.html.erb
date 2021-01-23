@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <h1><%= @customer.last_name%> <%= @customer.first_name%> 様</h1>
+    <h1><%= @customer.name%>  様</h1>
       <%# <%= link_to 'トップページ', root_path %> 
   </div>
   <div class="row pl-3 pr-3 d-flex justify-content-between">
@@ -25,12 +25,12 @@
     <table class="table table-striped border mt-4">
       <tr>
         <th>お名前</th>
-        <td><%= @customer.last_name %> <%= @customer.first_name %>  様</td>
+        <td><%= @customer.name %>  様</td>
       </tr>
 
       <tr>
         <th>お名前(フリガナ)</th>
-        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %>  様</td>
+        <td><%= @customer.name_kana %>  様</td>
       </tr>
 
       <tr>
