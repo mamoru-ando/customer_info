@@ -5,7 +5,7 @@ class Order < ApplicationRecord
     validates :date
     validates :people
     validates :table
-    validates :pay
+    validates :pay, numericality: { only_integer: true, message: 'は半角で入力してください' }
   end
 
 end

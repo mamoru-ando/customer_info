@@ -14,10 +14,8 @@
 ## customersテーブル
 | Column          | Type       | Option            | 
 | --------------- | ---------- | ----------------- | 
-| last_name       | string     | null: false       | 
-| first_name      | string     | null: false       | 
-| last_name_kana  | string     |                   | 
-| first_name_kana | string     |                   | 
+| name            | string     | null: false       | 
+| name_kana       | string     |                   | 
 | sex_id          | integer    |                   | 
 | tell1           | string     |                   | 
 | tell2           | string     |                   | 
@@ -25,6 +23,8 @@
 | address         | string     |                   | 
 | visit           | integer    |                   | 
 | memo            | text       |                   | 
+| appearance      | text       |                   | 
+
 
 ### Association
 - has_many :orders
@@ -32,25 +32,16 @@
 
 
 ## ordersテーブル
-| Column   | Type       | Option            | 
-| -------- | ---------- | ----------------- | 
-| date     | data       | null: false       | 
-| people   | integer    | null: false       | 
-| table    | string     | null: false       | 
-| drink    | string     |                   | 
-| food     | string     |                   | 
-| pay      | integer    | null: false       | 
-| customer | references | foreign_key: true | 
-
-### Association
-- belongs_to :customer
-
-
-## appearanceテーブル
-| Column   | Type       | Option            | 
-| -------- | ---------- | ----------------- | 
-| text     | text       |                   | 
-| customer | references | foreign_key: true | 
+| Column     | Type       | Option            | 
+| ---------- | ---------- | ----------------- | 
+| date       | data       | null: false       | 
+| people     | integer    | null: false       | 
+| table      | string     |                   | 
+| drink      | string     |                   | 
+| food       | string     |                   | 
+| pay        | integer    | null: false       | 
+| order_memo | string     |                   | 
+| customer   | references | foreign_key: true | 
 
 ### Association
 - belongs_to :customer
