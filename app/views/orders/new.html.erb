@@ -1,60 +1,57 @@
 <%= render 'shared/header' %>
 
 <div class="container">
-  <div class="row">
-    <h1><%= @customer.last_name%> <%= @customer.first_name%> 様</h1>
-  </div>
 
   <%= form_with model: [@customer, @order], url: customer_orders_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
 
-    <div>
+    <div class="mt-3">
       <%= f.label '来店日', class: 'control-label' %> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.date_field :date %>
     </div>
 
-    <div>
+    <div class="mt-2">
       <label>来店人数</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.text_field :people, placeholder:"例）3" %>名
     </div>
 
-    <div>
+    <div class="mt-2">
       <label>テーブル番号</label>
     </div>
     <div class="col">
       <%= f.text_field :table, placeholder:"例）A5" %>
     </div>
 
-    <div>
+    <div class="mt-2">
       <label>ドリンクオーダー</label>
     </div>
     <div class="col">
-      <%= f.text_area :drink, placeholder:"例）ビール4" %>
+      <%= f.text_area :drink, placeholder:"例）ビール4", class: "text_area" %>
     </div>
 
-    <div>
+    <div class="mt-2">
       <label>フードオーダー</label>
     </div>
     <div class="col">
-      <%= f.text_area :food, placeholder:"例）ポモドーロ1" %>
+      <%= f.text_area :food, placeholder:"例）ポモドーロ1", class: "text_area" %>
     </div>
 
-    <div>
+    <div class="mt-2 w-4">
       <label>支払い金額</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.text_field :pay, placeholder:"例）12000" %>円
     </div>
 
-    <div>
+    <div class="mt-2">
       <label>メモ</label>
     </div>
     <div class="col">
-      <%= f.text_area :order_memo %>
+      <%= f.text_area :order_memo, class: "memo" %>
     </div>
 
     <div class="sell-btn-contents mt-3 ml-3">
