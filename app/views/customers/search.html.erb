@@ -1,17 +1,33 @@
 <%= render 'shared/header' %>
 
-<h1>検索結果</h1>
+<div class="container">
+  <div class="row">
+    <h2>検索結果</h2>
+  </div>
 
-<div>
-  <% @results.each do |customer| %>
-      <%= link_to customer_path(customer.id) do %>
-        <div>
-          <%= customer.last_name %>
-          <%= customer.first_name %>
-          <%= customer.tell1 %>
-        </div>
-      <% end %>
-  <% end %>
-</div>
+  <div class="row pl-3 pr-3 d-flex justify-content-between">
+    <div>
+      <%= render 'shared/search' %>
+    </div>
+    <div>
+      <a href="customers/new" class="btn btn-info pull-right">お客様新規登録</a>
+    </div>
+  </div>
 
-<%= link_to 'トップページ', root_path %>
+  <div class="row">
+    <% @results.each do |customer| %>
+        <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
+          <%= link_to customer_path(customer.id), class: 'link_black' do %>
+            <div>
+              <%= customer.last_name %>
+              <%= customer.first_name %>
+            </div>
+              <%= customer.tell1 %>
+              <%= customer.memo %>
+              <%= customer.appearance %>
+          <% end %>
+        </button>
+    <% end %>
+  </div>
+
+  <a href="/" class="btn btn-info btn-sm mt-3 mb-3" role="button" methodo="get">トップページ</a>

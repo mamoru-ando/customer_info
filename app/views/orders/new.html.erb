@@ -1,52 +1,66 @@
-<h1>オーダー情報入力</h1>
-<%# <%= link_to '戻る', customer_path(customer_id: customer.id) %> 
-    <%# <div>
-      <%= @customer.last_name %>
-      <%# <%= binding.pry%>
-      <%# <%= @customer.first_name %>
-    <%# </div> %> 
+<%= render 'shared/header' %>
 
-<%= form_with model: [@customer, @order], url: customer_orders_path, local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
+<div class="container">
+  <div class="row">
+    <h1><%= @customer.last_name%> <%= @customer.first_name%> 様</h1>
+  </div>
 
-<div>
-  <%= f.label '来店日', class: 'control-label' %>
-  <%= f.date_field :date, class: 'form-control' %>
-</div>
+  <%= form_with model: [@customer, @order], url: customer_orders_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
 
-<div>
-  <label>来店人数</label>
-  <%= f.text_field :people, placeholder:"例）3" %>名
-</div>
-
-<div>
-  <label>テーブル番号</label>
-  <%= f.text_field :table, placeholder:"例）A5" %>
-</div>
-
-<div>
-  <label>ドリンクオーダー</label>
-  <%= f.text_area :drink, placeholder:"例）ビール4" %>
-</div>
-
-<div>
-  <label>フードオーダー</label>
-  <%= f.text_area :food, placeholder:"例）ポモドーロ1" %>
-</div>
-
-<div>
-  <label>支払い金額</label>
-  <%= f.text_field :pay, placeholder:"例）12000" %>円
-</div>
-
-<div>
-  <label>メモ</label>
-  <%= f.text_area :order_memo %>
-</div>
-
-    <div class="sell-btn-contents">
-      <%= f.submit "登録する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', :back, class:"back-btn" %>
+    <div>
+      <%= f.label '来店日', class: 'control-label' %> <span class="badge badge-danger">必須</span>
+    </div>
+    <div class="col">
+      <%= f.date_field :date %>
     </div>
 
-<% end %>
+    <div>
+      <label>来店人数</label> <span class="badge badge-danger">必須</span>
+    </div>
+    <div class="col">
+      <%= f.text_field :people, placeholder:"例）3" %>名
+    </div>
+
+    <div>
+      <label>テーブル番号</label>
+    </div>
+    <div class="col">
+      <%= f.text_field :table, placeholder:"例）A5" %>
+    </div>
+
+    <div>
+      <label>ドリンクオーダー</label>
+    </div>
+    <div class="col">
+      <%= f.text_area :drink, placeholder:"例）ビール4" %>
+    </div>
+
+    <div>
+      <label>フードオーダー</label>
+    </div>
+    <div class="col">
+      <%= f.text_area :food, placeholder:"例）ポモドーロ1" %>
+    </div>
+
+    <div>
+      <label>支払い金額</label> <span class="badge badge-danger">必須</span>
+    </div>
+    <div class="col">
+      <%= f.text_field :pay, placeholder:"例）12000" %>円
+    </div>
+
+    <div>
+      <label>メモ</label>
+    </div>
+    <div class="col">
+      <%= f.text_area :order_memo %>
+    </div>
+
+    <div class="sell-btn-contents mt-3 ml-3">
+      <%= f.submit "登録する" %>
+      <%=link_to 'もどる', :back %>
+    </div>
+
+  <% end %>
+</div>

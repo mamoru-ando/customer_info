@@ -3,9 +3,7 @@ class CustomersController < ApplicationController
   before_action :search_customer, only: [:index, :search]
 
   def index
-    @customers = Customer.all
-    # @keyword = Customer.ransack(params[:q])
-    # @customers = @keyword.result
+    @customers = Customer.all.order("created_at DESC")
   end
 
   def new
@@ -23,7 +21,6 @@ class CustomersController < ApplicationController
   end
 
   def show
-  # binding.pry
     @customer = Customer.find(params[:id])
     @orders = Order.where(customer_id: @customer.id).order("created_at DESC")
   end
@@ -49,7 +46,6 @@ class CustomersController < ApplicationController
 
   def search
     @results  = @keyword.result#.include(:customer)
-    # binding.pry
   end
 
   private

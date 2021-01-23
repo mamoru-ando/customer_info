@@ -1,26 +1,34 @@
 <%= render 'shared/header' %>
 
-<p>顧客一覧(トップページ)</p>
-<div>
-  <%= link_to '顧客情報新規登録', new_customer_path %>
-</div>
+<div class="container">
+  <div class="row col-10">
+    <h2>お客様一覧</h2>
+  </div>
 
-<%= search_form_for @keyword, url: search_customers_path, class: "search-form" do |f| %>
-  <%= f.text_field :last_name_or_first_name_or_memo_or_appearance_cont_any, placeholder: "顧客を検索する", class: "search-input" %>
-  <button type="submit", class="btn btn-primary">検索</button>
+  <div class="row pl-3 pr-3 d-flex justify-content-between">
+    <div>
+      <%= render 'shared/search' %>
+    </div>
+    <div>
+      <a href="customers/new" class="btn btn-info pull-right">お客様新規登録</a>
+    </div>
+  </div>
 
-<% end %>
-
-<div>
-  <% if @customers.present? %>
-    <% @customers.each do |customer| %>
-      <%= link_to customer_path(customer.id) do %>
-        <div>
-          <%= customer.last_name %>
-          <%= customer.first_name %>
-          <%= customer.tell1 %>
-        </div>
+  <div>
+    <% if @customers.present? %>
+      <% @customers.each do |customer| %>
+        <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
+          <%= link_to customer_path(customer.id), class: 'link_black' do %>
+            <div>
+              <%= customer.last_name %>
+              <%= customer.first_name %>
+            </div>
+            <%= customer.tell1 %>
+            <%= customer.memo %>
+            <%= customer.appearance %>
+          <% end %>
+        </button>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

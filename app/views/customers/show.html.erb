@@ -1,103 +1,131 @@
 <%= render 'shared/header' %>
 
-<h1>顧客情報詳細ページ</h1>
-<%= link_to 'トップページ', root_path %>
-<%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id) %>
-<%= link_to '顧客情報編集', edit_customer_path(@customer.id) %>
-<%= link_to '顧客削除', customer_path(@customer.id), method: :delete %>
-
-
-<div>
-  <label>お名前</label>
-  <%= @customer.last_name %>
-  <%= @customer.first_name %>
-</div>
-
-<div>
-  <label>お名前(ふりがな)</label>
-  <%= @customer.last_name_kana %>
-  <%= @customer.first_name_kana %>
-</div>
-
-<div>
-  <label>性別</label>
-  <%= @customer.sex.name %>
-</div>
-
-<div>
-  <label>電話番号1</label>
-  <%= @customer.tell1 %>
-</div>
-
-<div>
-  <label>電話番号2</label>
-  <%= @customer.tell2 %>
-</div>
-
-<div>
-  <label>メールアドレス</label>
-  <%= @customer.email %>
-</div>
-
-<div>
-  <label>住所</label>
-  <%= @customer.address %>
-</div>
-
-<div>
-  <label>来店回数</label>
-  <%# <%= @customer. %>
-</div>
-
-<div>
-  <label>メモ</label>
-  <%= @customer.memo %>
-</div>
-
-<div>
-  <label>外見的特徴</label>
-  <%= @customer.appearance %>
-</div>
-
-<p>オーダー一覧</p>
-<div>
-<% if @orders.present? %>
-  <% @orders.each do |order| %>
-    <div>
-      <tr>
-        <th >来店日</th>
-        <td><%= order.date %></td>
-      </tr>
-      <tr>
-        <th>人数</th>
-        <td><%= order.people %>名</td>
-      </tr>
-      <tr>
-        <th>テーブル番号</th>
-        <td><%= order.table %></td>
-      </tr>
-      <tr>
-        <th>ドリンクオーダー</th>
-        <td><%= order.drink %></td>
-      </tr>
-      <tr>
-        <th>フードオーダー</th>
-        <td><%= order.food %></td>
-      </tr>
-      <tr>
-        <th>会計金額</th>
-        <td><%= order.pay.to_s(:delimited) %>円</td>
-      </tr>
-      <tr>
-        <th>memo</th>
-        <td><%= order.order_memo %></td>
-      </tr>
-
-      <%= link_to '編集', edit_customer_order_path(@customer.id, order.id) %>
-      <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete %>
+<div class="container">
+  <div class="row">
+    <h1><%= @customer.last_name%> <%= @customer.first_name%> 様</h1>
+      <%# <%= link_to 'トップページ', root_path %> 
+  </div>
+  <div class="row pl-3 pr-3 d-flex justify-content-between">
+    <div class="text-left">
+      <a href="/" class="btn btn-info btn-sm" role="button" methodo="get">トップページ</a>
     </div>
-  <% end %>
-<% else %>
-  <p>*** オーダー情報はありません ***</p>
-<% end %>
+    <div class="text-right">
+      <button class="btn btn-info btn-sm">
+        <%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id), class: 'link_white' %>
+      </button>
+      <button class="btn btn-primary btn-sm">
+        <%= link_to '顧客情報編集', edit_customer_path(@customer.id), class: 'link_white' %>
+      </button>
+      <button class="btn btn-danger btn-sm">
+        <%= link_to '顧客削除', customer_path(@customer.id), method: :delete, class: 'link_white' %>
+      </button>
+    </div>
+  </div>
+
+    <table class="table table-striped border mt-4">
+      <tr>
+        <th>お名前</th>
+        <td><%= @customer.last_name %> <%= @customer.first_name %>  様</td>
+      </tr>
+
+      <tr>
+        <th>お名前(フリガナ)</th>
+        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %>  様</td>
+      </tr>
+
+      <tr>
+        <th>性別</th>
+        <td><%= @customer.sex.name %></td>
+      </tr>
+
+      <tr>
+        <th>電話番号-1</th>
+        <td><%= @customer.tell1 %></td>
+      </tr>
+
+      <tr>
+        <th>電話番号-2</th>
+        <td><%= @customer.tell2 %></td>
+      </tr>
+
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></td>
+      </tr>
+
+      <tr>
+        <th>来店回数</th>
+        <td><%= @customer.orders.count %></td>
+      </tr>
+
+      <tr>
+        <th>メモ</th>
+        <td><%= @customer.memo %></td>
+      </tr>
+
+      <tr>
+        <th>外見的特徴</th>
+        <td><%= @customer.appearance %></td>
+      </tr>
+    </table>
+
+      <div class="row">
+        <div class="col-sm-5 text-center">
+          <h3 class="border rounded-lg border-info p-2">オーダー一覧</h3>
+        </div>
+      </div>
+
+  <div>
+    <% if @orders.present? %>
+      <% @orders.each do |order| %>
+      <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
+        <table class="table border rounded-lg">
+          <tr>
+            <th>来店日</th>
+            <td><%= order.date %> <%= wday[order.date.wday] %></td>
+          </tr>
+          <tr>
+            <th>人数</th>
+            <td><%= order.people %>名</td>
+          </tr>
+          <tr>
+            <th>テーブル番号</th>
+            <td><%= order.table %></td>
+          </tr>
+          <tr>
+            <th>ドリンクオーダー</th>
+            <td><%= order.drink %></td>
+          </tr>
+          <tr>
+            <th>フードオーダー</th>
+            <td><%= order.food %></td>
+          </tr>
+          <tr>
+            <th>会計金額</th>
+            <td><%= order.pay.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <th>memo</th>
+            <td><%= order.order_memo %></td>
+          </tr>
+
+          <div class="row d-flex justify-content-end pr-3">
+            <button class="btn btn-primary btn-sm">
+              <%= link_to '編集', edit_customer_order_path(@customer.id, order.id), class: 'link_white' %>
+            </button>
+            <button class="btn btn-danger btn-sm ml-2">
+              <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' %>
+            </button>
+          </div>
+        </table>
+      <% end %>
+    <% else %>
+      <p class="h3 text-center">*** オーダー情報はありません ***</p>
+    <% end %>
+  </div>
 </div>

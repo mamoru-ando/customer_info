@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def new
+    # binding.pry
     @customer = Customer.new
     @order = Order.new
   end
