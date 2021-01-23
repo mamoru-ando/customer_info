@@ -1,0 +1,13 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: お名前
+     customer:
+       name: 名前
+     order:
+       date: 日付
+       people: 人数
+       table: テーブル
+       pay: 支払い金額
+
