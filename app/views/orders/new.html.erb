@@ -56,7 +56,7 @@
 
     <div class="sell-btn-contents mt-3 ml-3">
       <%= f.submit "登録する" %>
-      <%=link_to 'もどる', :back %>
+      <%= link_to 'もどる', customer_path(params[:customer_id]) %>
     </div>
 
   <% end %>

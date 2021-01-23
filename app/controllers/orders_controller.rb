@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   def new
-    # binding.pry
     @customer = Customer.new
     @order = Order.new
   end
@@ -23,7 +22,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    # binding.pry
     if @order.update(order_params)
       redirect_to customer_path(@order.customer.id)
     else
@@ -32,7 +30,6 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to customer_path(@order.customer.id)
