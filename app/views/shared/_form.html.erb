@@ -6,7 +6,7 @@
       <label>お名前</label> <span class="badge badge-danger">必須</span>
     </div>
     <div>
-      <%= f.text_field :last_name, class:"last-name", placeholder:"例) 山田" %>
+      <%= f.text_field :last_name, class:"last-name", autofocus: true, placeholder:"例) 山田" %>
       <%= f.text_field :first_name, class:"first-name", placeholder:"例) 太郎"%>
     </div>
 
@@ -45,7 +45,7 @@
       <label class="form-text">メールアドレス</label>
     </div>
     <div>
-      <%= f.email_field :email, placeholder:"PC・携帯どちらでも可", autofocus: true %>
+      <%= f.email_field :email, placeholder:"PC・携帯どちらでも可" %>
     </div>
 
     <div>

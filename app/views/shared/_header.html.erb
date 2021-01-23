@@ -5,7 +5,7 @@
         <% if user_signed_in? %>
           <%= current_user.name %>
           <div type="button" class="btn btn-light btn-sm border ml-4">
-            <%= link_to 'ユーザー編集', edit_user_registration_path %>
+            <%= link_to 'ユーザー編集', edit_user_path(current_user.id) %>
           </div>
           <button type="button" class="btn btn-outline-danger btn-sm">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'link_white'%>
