@@ -1,12 +1,13 @@
 <%= render 'shared/header' %>
 
 <div class="container">
+  <h2>オーダー入力</h2>
 
   <%= form_with model: [@customer, @order], url: customer_orders_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
 
     <div class="mt-3">
-      <%= f.label '来店日', class: 'control-label' %> <span class="badge badge-danger">必須</span>
+      <%= f.label '来店日' %> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.date_field :date %>
@@ -16,7 +17,7 @@
       <label>来店人数</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
-      <%= f.text_field :people, placeholder:"例）3" %>名
+      <%= f.text_field :people, class: "text-right", placeholder:"例）3" %> 名
     </div>
 
     <div class="mt-2">
@@ -44,14 +45,14 @@
       <label>支払い金額</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
-      <%= f.text_field :pay, placeholder:"例）12000" %>円
+      <%= f.text_field :pay, class: "text-right", placeholder:"例）12000" %> 円
     </div>
 
     <div class="mt-2">
       <label>メモ</label>
     </div>
     <div class="col">
-      <%= f.text_area :order_memo, class: "memo" %>
+      <%= f.text_area :order_memo %>
     </div>
 
     <div class="sell-btn-contents mt-3 ml-3">
