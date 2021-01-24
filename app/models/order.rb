@@ -3,9 +3,8 @@ class Order < ApplicationRecord
 
   with_options presence: true do
     validates :date
-    validates :people
-    validates :table
-    validates :pay, numericality: { only_integer: true, message: 'は半角で入力してください' }
+    validates :people, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
+    validates :pay, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
   end
 
 end
