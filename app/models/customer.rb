@@ -5,8 +5,8 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   belongs_to :user
 
-  validates :name, presence: true
-  with_options format: { with: /\A\d{10,11}\z/, message: 'はハイフンなしで入力してください' } do
+  validates :name, presence: true, length: { maximum: 50 }
+  with_options format: { with: /\A\d{10,11}\z/, allow_blank: true, message: 'はハイフンなしで入力してください' } do
     validates :tell1
     validates :tell2
   end
