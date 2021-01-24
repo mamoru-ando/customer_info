@@ -1,12 +1,17 @@
-  <nav class="navbar navbar-lg sticky-top pt-0">
-    <div class="container-fluid bg-info text-white">
-      <a href="/" class="navbar-brand text-white h1">Cliente</a>
-      <div class="navbar-text navbar-right">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar sticky-top bg-info text-white">
+      <h1><%= link_to 'Cliente', root_path, class: "app_name" %></h1>
+      <div class="navbar-text navbar-right h4">
         <% if user_signed_in? %>
           <%= current_user.name %>
-          <div type="button" class="btn btn-light btn-sm border ml-4">
+          <button type="button" class="btn btn-light btn-sm border ml-4">
             <%= link_to 'ユーザー編集', edit_user_path(current_user.id) %>
-          </div>
+          </button>
           <button type="button" class="btn btn-outline-danger btn-sm">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'link_white'%>
           </button>
@@ -19,5 +24,5 @@
           </button>
         <% end %>
       </div>
-    </div>
   </nav>
+</body>

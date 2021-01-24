@@ -84,45 +84,48 @@
     <% if @orders.present? %>
       <% @orders.each do |order| %>
       <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
-        <table class="table border rounded-lg">
-          <tr>
-            <th>来店日</th>
-            <td><%= order.date %> <%= wday[order.date.wday] %></td>
-          </tr>
-          <tr>
-            <th>人数</th>
-            <td><%= order.people %>名</td>
-          </tr>
-          <tr>
-            <th>テーブル番号</th>
-            <td><%= order.table %></td>
-          </tr>
-          <tr>
-            <th>ドリンクオーダー</th>
-            <td><%= order.drink %></td>
-          </tr>
-          <tr>
-            <th>フードオーダー</th>
-            <td><%= order.food %></td>
-          </tr>
-          <tr>
-            <th>会計金額</th>
-            <td><%= order.pay.to_s(:delimited) %>円</td>
-          </tr>
-          <tr>
-            <th>memo</th>
-            <td><%= order.order_memo %></td>
-          </tr>
+        <div class="row d-flex justify-content-end pr-3">
+          <button class="btn btn-primary btn-sm">
+            <%= link_to '編集', edit_customer_order_path(@customer.id, order.id), class: 'link_white' %>
+          </button>
+          <button class="btn btn-danger btn-sm ml-2">
+            <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' %>
+          </button>
+        </div>
 
-          <div class="row d-flex justify-content-end pr-3">
-            <button class="btn btn-primary btn-sm">
-              <%= link_to '編集', edit_customer_order_path(@customer.id, order.id), class: 'link_white' %>
-            </button>
-            <button class="btn btn-danger btn-sm ml-2">
-              <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' %>
-            </button>
-          </div>
+        <table class="table table-sm border rounded-lg">
+          <tbody>
+            <tr>
+              <th scope="row">来店日</th>
+              <td><%= order.date %> <%= wday[order.date.wday] %></td>
+            </tr>
+            <tr>
+              <th scope="row">人数</th>
+              <td><%= order.people %> 名</td>
+            </tr>
+            <tr>
+              <th scope="row">テーブル番号</th>
+              <td><%= order.table %></td>
+            </tr>
+            <tr>
+              <th scope="row">ドリンクオーダー</th>
+              <td><%= order.drink %></td>
+            </tr>
+            <tr>
+              <th scope="row">フードオーダー</th>
+              <td><%= order.food %></td>
+            </tr>
+            <tr>
+              <th scope="row">会計金額</th>
+              <td><%= order.pay.to_s(:delimited) %>円</td>
+            </tr>
+            <tr>
+              <th scope="row">memo</th>
+              <td><%= order.order_memo %></td>
+            </tr>
+          </tbody>
         </table>
+
       <% end %>
     <% else %>
       <p class="h3 text-center">*** オーダー情報はありません ***</p>
