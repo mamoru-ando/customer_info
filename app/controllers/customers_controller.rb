@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :search_customer, only: [:index, :search]
 
   def index
-    @customers = Customer.all.order("created_at DESC")
+    @customers = Customer.all.order("updated_at DESC")
   end
 
   def new
@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @orders = Order.where(customer_id: @customer.id).order("created_at DESC")
+    @orders = Order.where(customer_id: @customer.id).order("date DESC")
   end
 
   def edit
