@@ -44,7 +44,7 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @results  = @keyword.result#.include(:customer)
+    @results  = @keyword.result.order("created_at DESC")
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <div class="row">
+  <div class="row col-10">
     <h2>検索結果</h2>
   </div>
 
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div>
     <% @results.each do |customer| %>
         <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
           <%= link_to customer_path(customer.id), class: 'link_black' do %>
