@@ -44,7 +44,7 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @results  = @keyword.result.order("created_at DESC")
+    @results  = @keyword.result.order("updated_at DESC")
   end
 
   private
