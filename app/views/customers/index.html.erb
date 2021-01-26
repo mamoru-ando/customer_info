@@ -18,11 +18,10 @@
         <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
           <%= link_to customer_path(customer.id), class: 'link_black' do %>
             <div>
-              <%= customer.name %>
-              <%= customer.name_kana %>
+              <%= customer.name %>&emsp;
+              <%= customer.name_kana %>&emsp;
             </div>
-            <%= customer.tell1 %>
-            <%= customer.memo %>
+            <%= customer.memo %>&emsp;
             <%= customer.appearance %>
           <% end %>
         </button>
