@@ -1,5 +1,4 @@
-# customer_info(Cliente)
-スクリーンショット 2021-01-25 17.47.58.png
+# ![ClienteLogo](https://raw.githubusercontent.com/mamoru-ando/customer_info/3847a61eea0ff01e4bf39a8a68f00eefef90e158/Cliente%E3%83%AD%E3%82%B3%E3%82%99%202021-01-25%2017.47.58.png)
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mamoru-ando/customer_info)
 
