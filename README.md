@@ -54,7 +54,7 @@
 
 # データベース設計
 ## ER図
-![customer](https://user-images.githubusercontent.com/75655307/106238964-28b2bd00-6245-11eb-88fa-74ded72bb3ca.png)
+![customer](https://user-images.githubusercontent.com/75655307/106239145-74fdfd00-6245-11eb-81ed-e41f4c417633.png)
 
 ## usersテーブル
 | Column             | Type   | Option      | 
@@ -96,7 +96,7 @@
 | drink      | string     |                   | 
 | food       | string     |                   | 
 | pay        | integer    | null: false       | 
-| order_memo | string     |                   | 
+| order_memo | text       |                   | 
 | customer   | references | foreign_key: true | 
 
 ### Association
