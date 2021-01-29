@@ -52,6 +52,9 @@
 
 
 # データベース設計
+##ER図
+![ER図](imags/customer.png)
+
 ## usersテーブル
 | Column             | Type   | Option      | 
 | ------------------ | ------ | ----------- | 
