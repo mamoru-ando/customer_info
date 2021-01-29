@@ -2,6 +2,7 @@
 <img src="https://raw.githubusercontent.com/mamoru-ando/customer_info/3847a61eea0ff01e4bf39a8a68f00eefef90e158/Cliente%E3%83%AD%E3%82%B3%E3%82%99%202021-01-25%2017.47.58.png" alt="Cliente" title="Cliente">
 </div>
 
+# Cliente(クリエンテ)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mamoru-ando/customer_info)
 
 # アプリケーション概要
@@ -79,10 +80,11 @@
 | visit           | integer    |                   | 
 | memo            | text       |                   | 
 | appearance      | text       |                   | 
+| user            | references | foreign_key: true | 
 
 ### Association
 - has_many :orders
-- has_one :appearance
+- belongs_to :user
 
 
 ## ordersテーブル
