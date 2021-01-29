@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2021-01-29T06:07:02.996Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="dIwwySqHEhrJ7o-Nw1dj" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2021-01-29T06:16:58.589Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="-Swa9T8Ssip4Etnuxfy7" version="13.10.0" type="embed">
     <diagram id="-X8SMet6vGvCI8jK56J6" name="Page-1">
         <mxGraphModel dx="780" dy="568" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -17,10 +17,10 @@
                     <mxGeometry y="30" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="customers" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="40" width="160" height="230" as="geometry"/>
+                    <mxGeometry x="280" y="40" width="160" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="- last_name&#10;- first_name&#10;- last_name_kana&#10;- first_name_kana&#10;- sex&#10;- tell1&#10;- tell2&#10;- address&#10;- email&#10;- memo&#10;- visit&#10;- appearance&#10;- user_id" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="8" vertex="1">
-                    <mxGeometry y="30" width="160" height="200" as="geometry"/>
+                <mxCell id="9" value="- name&#10;- name_kana&#10;- sex&#10;- tell1&#10;- tell2&#10;- address&#10;- email&#10;- memo&#10;- visit&#10;- appearance&#10;- user_id" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="8" vertex="1">
+                    <mxGeometry y="30" width="160" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" parent="1" source="3" target="9" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
