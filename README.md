@@ -54,7 +54,7 @@
 
 # データベース設計
 ## ER図
-![customer](https://user-images.githubusercontent.com/75655307/106238312-fc4a7100-6243-11eb-9e8c-2e6176823fba.png)
+![customer](https://user-images.githubusercontent.com/75655307/106238964-28b2bd00-6245-11eb-88fa-74ded72bb3ca.png)
 
 ## usersテーブル
 | Column             | Type   | Option      | 
