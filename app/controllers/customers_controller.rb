@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :search_customer, only: [:index, :search]
 
   def index
-    @customers = Customer.all.order("updated_at DESC")
+    @customers = Customer.where(user_id: current_user.id).order("updated_at DESC")
   end
 
   def new
