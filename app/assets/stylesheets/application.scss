@@ -39,9 +39,15 @@
   text-align: right;
 }
 
-.app_name{
+.app-name{
   font-family: 'Nunito', sans-serif;
   color: white;
+}
+
+.navbar{
+  .app-name{
+    text-decoration: none;
+  }
 }
 
 .footer{

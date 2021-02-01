@@ -14,23 +14,23 @@
 
   <body>
     <nav class="navbar sticky-top bg-info text-white">
-      <h1><%= link_to 'Cliente', root_path, class: "app_name" %></h1>
+      <h1><%= link_to 'Cliente', root_path, class: "app-name" %></h1>
       <div class="navbar-text navbar-right h4">
         <% if user_signed_in? %>
           <%= current_user.name %>
-          <button type="button" class="btn btn-light btn-sm border ml-4">
-            <%= link_to 'ユーザー編集', edit_user_path(current_user.id) %>
-          </button>
-          <button type="button" class="btn btn-outline-danger btn-sm">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'link_white'%>
-          </button>
+          <%= link_to edit_user_path(current_user.id) do %>
+            <button type="button" class="btn btn-light btn-sm border ml-4">ユーザー編集</button>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'link_white' do %>
+            <button type="button" class="btn btn-outline-danger btn-sm">ログアウト</button>
+          <% end %>
         <% else %>
-          <button type="button" class="btn btn-outline-light btn-sm mr-2">
-            <%= link_to '新規登録', new_user_registration_path, class: 'link_white' %>
-          </button>
-          <button type="button" class="btn btn-primary btn-sm mr-3">
-            <%= link_to 'ログイン', new_user_session_path, class: 'link_white' %>
-          </button>
+          <%= link_to new_user_registration_path, class: 'link_white' do %>
+            <button type="button" class="btn btn-outline-light btn-sm mr-2">新規登録</button>
+          <% end %>
+          <%= link_to  new_user_session_path, class: 'link_white' do %>
+            <button type="button" class="btn btn-primary btn-sm mr-3">ログイン</button>
+          <% end %>
         <% end %>
       </div>
     </nav>
