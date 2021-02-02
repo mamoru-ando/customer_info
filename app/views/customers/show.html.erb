@@ -7,15 +7,15 @@
       <a href="/" class="btn btn-info btn-sm" role="button" methodo="get">トップページ</a>
     </div>
     <div class="text-right">
-      <button class="btn btn-info btn-sm">
-        <%= link_to 'オーダー情報入力', new_customer_order_path(@customer.id), class: 'link_white' %>
-      </button>
-      <button class="btn btn-primary btn-sm">
-        <%= link_to '顧客情報編集', edit_customer_path(@customer.id), class: 'link_white' %>
-      </button>
-      <button class="btn btn-danger btn-sm">
-        <%= link_to '顧客削除', customer_path(@customer.id), method: :delete, class: 'link_white' %>
-      </button>
+      <%= link_to  new_customer_order_path(@customer.id), class: 'link_white' do %>
+        <button class="btn btn-info btn-sm mr-2">オーダー情報入力</button>
+      <% end %>
+      <%= link_to  edit_customer_path(@customer.id), class: 'link_white' do %>
+        <button class="btn btn-primary btn-sm mr-2">顧客情報編集</button>
+      <% end %>
+      <%= link_to customer_path(@customer.id), method: :delete, class: 'link_white' do %>
+        <button class="btn btn-danger btn-sm">顧客削除</button>
+      <% end %>
     </div>
   </div>
 
@@ -82,12 +82,12 @@
       <% @orders.each do |order| %>
       <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
         <div class="row d-flex justify-content-end pr-3">
-          <button class="btn btn-primary btn-sm">
-            <%= link_to '編集', edit_customer_order_path(@customer.id, order.id), class: 'link_white' %>
-          </button>
-          <button class="btn btn-danger btn-sm ml-2">
-            <%= link_to "削除", customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' %>
-          </button>
+          <%= link_to edit_customer_order_path(@customer.id, order.id), class: 'link_white' do %>
+            <button class="btn btn-primary btn-sm">編集</button>
+          <% end %>
+          <%= link_to customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' do %>
+            <button class="btn btn-danger btn-sm ml-2">削除</button>
+          <% end %>
         </div>
 
         <table class="table table-sm border rounded-lg">
