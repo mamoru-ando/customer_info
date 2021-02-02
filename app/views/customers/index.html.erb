@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <div class="row col-10">
+  <div class="row col-10 mt-1">
     <h2>お客様一覧</h2>
   </div>
 
@@ -17,20 +17,20 @@
       <% @customers.each do |customer| %>
       <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
         <%= link_to customer_path(customer.id), class: 'link_black' do %>
-          <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
+          <button class="border p-1 pl-2 mt-3 rounded-lg col-12 text-left">
             <div>
               <%= customer.name %>&emsp;
               <%= customer.name_kana %>&emsp;
             </div>
             <div>
-              <%= customer.memo %>&emsp;
+              &emsp;<%= customer.memo %>&emsp;
               <%= customer.appearance %>
             </div>
             <div>
               <% if customer.orders.present? %>
-                最終来店日：<%= customer.orders.last.date %> <%= wday[customer.orders.last.date.wday] %>
+                &emsp;最終来店日：<%= customer.orders.last.date %> <%= wday[customer.orders.last.date.wday] %>
               <% else %>
-                来店データはありません
+                &emsp;来店データはありません
               <% end %>
             </div>
           </button>
