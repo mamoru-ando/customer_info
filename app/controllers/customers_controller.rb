@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = Customer.includes(:user).where(user_id: current_user.id).order("updated_at DESC")
+    @customers = Customer.eager_load(:user, :orders).where(user_id: current_user.id).order(updated_at: "DESC")
   end
 
   def new
