@@ -52,7 +52,7 @@ class CustomersController < ApplicationController
   end
 
   def search_customer
-    @keyword = Customer.ransack(params[:q])
+    @keyword = Customer.includes(:orders).ransack(params[:q])
   end
 
   def set_customer
