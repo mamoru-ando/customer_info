@@ -29,6 +29,8 @@
             <div>
               <% if customer.orders.present? %>
                 最終来店日：<%= customer.orders.last.date %> <%= wday[customer.orders.last.date.wday] %>
+              <% else %>
+                来店データはありません
               <% end %>
             </div>
           </button>
