@@ -8,6 +8,10 @@
 # アプリケーション概要
 - 店舗におけるお客様情報とオーダー情報の管理ができるアプリケーションです
 
+![画面収録 2021-02-03 11 05 41 mov](https://user-images.githubusercontent.com/75655307/106689321-22408e80-6613-11eb-9225-64dac1eefdf1.gif)
+![画面収録 2021-02-03 11 08 42 mov](https://user-images.githubusercontent.com/75655307/106689324-240a5200-6613-11eb-8a3b-2cd34865e5b7.gif)
+![画面収録 2021-02-03 11 11 43 mov](https://user-images.githubusercontent.com/75655307/106689325-253b7f00-6613-11eb-8ab8-e1cab0fb7e19.gif)
+
 
 # URL
 - https://cliente-customer-info.herokuapp.com/
@@ -106,3 +110,4 @@
 # ローカルでの動作方法
 - Ruby 2.6.5
 - Rails 6.0.0
+- DB  MySQL
