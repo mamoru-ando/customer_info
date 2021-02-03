@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <div class="row">
+  <div class="row mt-2">
     <h1><%= @customer.name%>  様</h1>
   </div>
   <div class="row pl-3 pr-3 d-flex justify-content-between">
@@ -21,63 +21,54 @@
 
     <table class="table table-striped border mt-4">
       <tr>
-        <th>お名前</th>
+        <th style="width:30vw;">お名前</th>
         <td><%= @customer.name %>  様</td>
       </tr>
-
       <tr>
         <th>お名前(フリガナ)</th>
         <td><%= @customer.name_kana %>  様</td>
       </tr>
-
       <tr>
         <th>性別</th>
         <td><%= @customer.sex.name %></td>
       </tr>
-
       <tr>
         <th>電話番号-1</th>
         <td><%= @customer.tell1 %></td>
       </tr>
-
       <tr>
         <th>電話番号-2</th>
         <td><%= @customer.tell2 %></td>
       </tr>
-
       <tr>
         <th>メールアドレス</th>
         <td><%= @customer.email %></td>
       </tr>
-
       <tr>
         <th>住所</th>
         <td><%= @customer.address %></td>
       </tr>
-
       <tr>
         <th>来店回数</th>
         <td><%= @customer.orders.count %></td>
       </tr>
-
       <tr>
         <th>メモ</th>
         <td><%= @customer.memo %></td>
       </tr>
-
       <tr>
         <th>外見的特徴</th>
         <td><%= @customer.appearance %></td>
       </tr>
     </table>
 
-      <div class="row">
+      <div class="row mt-4 mb-3">
         <div class="col-sm-5 text-center">
           <h3 class="border rounded-lg border-info p-2">オーダー一覧</h3>
         </div>
       </div>
 
-  <div>
+  <div class="col mb-5">
     <% if @orders.present? %>
       <% @orders.each do |order| %>
       <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
@@ -93,7 +84,7 @@
         <table class="table table-sm border rounded-lg">
           <tbody>
             <tr>
-              <th scope="row" style="width:300px;">来店日</th>
+              <th scope="row" style="width:30vw;">来店日</th>
               <td><%= order.date %> <%= wday[order.date.wday] %></td>
             </tr>
             <tr>

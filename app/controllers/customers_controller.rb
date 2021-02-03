@@ -52,7 +52,13 @@ class CustomersController < ApplicationController
   end
 
   def search_customer
-    @keyword = Customer.includes(:orders).ransack(params[:q])
+    @sex = Sex.all
+    if params[:q] != nil
+      params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'] = params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'].split(/[\p{blank}\s]+/)
+      @keyword = Customer.includes(:orders).ransack(params[:q])
+    else
+      @keyword = Customer.includes(:orders).ransack(params[:q])
+    end
   end
 
   def set_customer

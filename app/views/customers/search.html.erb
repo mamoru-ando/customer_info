@@ -1,5 +1,5 @@
 <div class="container mb-5">
-  <div class="row col-10">
+  <div class="row col-10 mt-2">
     <h2>検索結果</h2>
   </div>
 
@@ -13,27 +13,31 @@
   </div>
 
   <div>
-    <% @results.each do |customer| %>
-      <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
-      <%= link_to customer_path(customer.id), class: 'link_black' do %>
-        <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
-          <div>
-            <%= customer.name %>&emsp;
-            <%= customer.name_kana %>&emsp;
-          </div>
-          <div>
-            &emsp;<%= customer.memo %>&emsp;
-            <%= customer.appearance %>
-          </div>
-          <div>
-            <% if customer.orders.present? %>
-              &emsp;最終来店日：<%= customer.orders.last.date %> <%= wday[customer.orders.last.date.wday] %>
-            <% else %>
-              &emsp;来店データはありません
-            <% end %>
-          </div>
-        </button>
+  <% if @results.present? %>
+      <% @results.each do |customer| %>
+        <% wday = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']%>
+        <%= link_to customer_path(customer.id), class: 'link_black' do %>
+          <button class="border p-1 pl-2 mt-2 rounded-lg col-12 text-left">
+            <div>
+              <%= customer.name %>&emsp;
+              <%= customer.name_kana %>
+            </div>
+            <div>
+              &emsp;<%= customer.memo %>
+              &emsp;<%= customer.appearance %>
+            </div>
+            <div>
+              <% if customer.orders.present? %>
+                &emsp;最終来店日：<%= customer.orders.last.date %> <%= wday[customer.orders.last.date.wday] %>
+              <% else %>
+                &emsp;来店データはありません
+              <% end %>
+            </div>
+          </button>
+        <% end %>
       <% end %>
+    <% else %>
+      <div>***条件に当てはまるお客様はありません***</div>
     <% end %>
   </div>
 
