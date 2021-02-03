@@ -8,9 +8,9 @@
 # アプリケーション概要
 - 店舗におけるお客様情報とオーダー情報の管理ができるアプリケーションです
 
-![画面収録 2021-02-03 11 05 41 mov](https://user-images.githubusercontent.com/75655307/106689321-22408e80-6613-11eb-9225-64dac1eefdf1.gif)
-![画面収録 2021-02-03 11 08 42 mov](https://user-images.githubusercontent.com/75655307/106689324-240a5200-6613-11eb-8a3b-2cd34865e5b7.gif)
-![画面収録 2021-02-03 11 11 43 mov](https://user-images.githubusercontent.com/75655307/106689325-253b7f00-6613-11eb-8ab8-e1cab0fb7e19.gif)
+![customer](https://user-images.githubusercontent.com/75655307/106693378-ac8bf100-6619-11eb-83e3-6a32ea2759c1.gif)
+![order](https://user-images.githubusercontent.com/75655307/106693365-a6961000-6619-11eb-9f10-085bad34af67.gif)
+![search](https://user-images.githubusercontent.com/75655307/106693380-ad248780-6619-11eb-944f-f378ad6faf4d.gif)
 
 
 # URL
