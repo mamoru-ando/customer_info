@@ -5,28 +5,28 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
   <div>
-    <label>店舗名</label> <span class="badge badge-danger">必須</span>
+    <label for="user_name">店舗名</label> <span class="badge badge-danger">必須</span>
   </div>
   <div>
     <%= f.text_field :name, autofocus: true, placeholder:"例) レストランA", maxlength:"40" %>
   </div>
 
   <div class="mt-2">
-    <label>メールアドレス</label> <span class="badge badge-danger">必須</span>
+    <label for="user_email">メールアドレス</label> <span class="badge badge-danger">必須</span>
   </div>
   <div>
     <%= f.email_field :email, class:"memo", placeholder:"PC・携帯どちらでも可", autocomplete: "email" %>
   </div>
 
   <div class="mt-2">
-    <label>パスワード</label> <span class="badge badge-danger">必須</span>
+    <label for="user_password">パスワード</label> <span class="badge badge-danger">必須</span>
   </div>
   <div>
     <%= f.password_field :password, class:"memo", placeholder:"6文字以上の半角英数字" %>
   </div>
 
   <div class="mt-2">
-    <label>パスワード(確認)</label> <span class="badge badge-danger">必須</span>
+    <label for="user_password_confirmation">パスワード(確認)</label> <span class="badge badge-danger">必須</span>
   </div>
   <div>
     <%= f.password_field :password_confirmation, class:"memo", placeholder:"同じパスワードを入力して下さい" %>

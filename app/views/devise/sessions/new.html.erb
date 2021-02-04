@@ -5,7 +5,7 @@
 
     <div class="field">
       <div class='form-text-wrap'>
-        <label>メールアドレス</label>
+        <label for="user_email">メールアドレス</label>
         <span class="badge badge-danger">必須</span>
       </div>
       <%= f.email_field :email, placeholder:"PC・携帯どちらでも可", autofocus: true %>
@@ -13,7 +13,7 @@
 
     <div class="field">
       <div class='mt-3'>
-        <label>パスワード</label>
+        <label for="user_password">パスワード</label>
         <span class="badge badge-danger">必須</span>
       </div>
       <%= f.password_field :password, placeholder:"半角英数6文字以上" %>
