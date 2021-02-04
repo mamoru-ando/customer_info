@@ -4,7 +4,8 @@ ja:
      user:
        name: お名前
      customer:
-       name: 名前
+       name: お名前
+       name_kana: お名前カナ
      order:
        date: 日付
        people: 人数
