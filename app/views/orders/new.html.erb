@@ -5,49 +5,49 @@
     <%= render 'shared/error_messages', model: f.object %>
 
     <div class="mt-3">
-      <%= f.label '来店日' %> <span class="badge badge-danger">必須</span>
+      <label for="order_date">来店日</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.date_field :date %>
     </div>
 
     <div class="mt-2">
-      <label>来店人数</label> <span class="badge badge-danger">必須</span>
+      <label for="order_people">来店人数</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.text_field :people, class: "text-right", placeholder:"例）3" %> 名
     </div>
 
     <div class="mt-2">
-      <label>テーブル番号</label>
+      <label for="order_table">テーブル番号</label>
     </div>
     <div class="col">
       <%= f.text_field :table, placeholder:"例）A5" %>
     </div>
 
     <div class="mt-2">
-      <label>ドリンクオーダー</label>
+      <label for="order_drink">ドリンクオーダー</label>
     </div>
     <div class="col">
       <%= f.text_area :drink, placeholder:"例）ビール4", class: "text_area" %>
     </div>
 
     <div class="mt-2">
-      <label>フードオーダー</label>
+      <label for="order_food">フードオーダー</label>
     </div>
     <div class="col">
       <%= f.text_area :food, placeholder:"例）ポモドーロ1", class: "text_area" %>
     </div>
 
     <div class="mt-2 w-4">
-      <label>支払い金額</label> <span class="badge badge-danger">必須</span>
+      <label for="order_pay">支払い金額</label> <span class="badge badge-danger">必須</span>
     </div>
     <div class="col">
       <%= f.text_field :pay, class: "text-right", placeholder:"例）12000" %> 円
     </div>
 
     <div class="mt-2">
-      <label>メモ</label>
+      <label for="order_order_memo">メモ</label>
     </div>
     <div class="col">
       <%= f.text_area :order_memo %>
