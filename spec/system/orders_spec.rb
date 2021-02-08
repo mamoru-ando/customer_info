@@ -105,3 +105,38 @@ RSpec.describe 'オーダー編集', type: :system do
     expect(page).to have_no_link '編集', href: edit_customer_order_path(@order.customer_id, @order.id)
   end
 end
+
+
+RSpec.describe 'オーダー削除', type: :system do
+  before do
+    @order = FactoryBot.create(:order)
+  end
+
+  it 'ログインしているとオーダー情報が削除できる' do
+    # ログインページへ移動する
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: @order.customer.user.email
+    fill_in 'パスワード', with: @order.customer.user.password
+    find('input[name="commit"]').click
+    expect(current_path).to eq(root_path)
+    # お客様詳細ページへ遷移する
+    visit customer_path(@order.customer_id)
+    # オーダー削除ボタンがあることを確認する
+    expect(page).to have_link '削除', href: customer_order_path(@order.customer_id, @order.id)
+    # お客様を削除するとレコードの数が1減ることを確認する
+    expect{
+      find_link('削除', href: customer_order_path(@order.customer_id, @order.id)).click
+    }.to change { Order.count }.by(-1)
+    # お客様詳細ページへ遷移したことを確認する
+    expect(current_path).to eq(customer_path(@order.customer_id))
+    # 編集した内容が表示されていることを確認する
+    expect(page).to have_no_content("#{@order.date}")
+  end
+
+  it 'ログインしているとオーダー情報が削除できる' do
+    # ログインページへ移動する
+    visit new_user_session_path
+    # ログインページにはオーダー削除ボタンがないことを確認する
+    expect(page).to have_no_link '削除', href: customer_order_path(@order.customer_id, @order.id)
+  end
+end
