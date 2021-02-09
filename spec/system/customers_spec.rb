@@ -9,11 +9,7 @@ RSpec.describe "お客様登録", type: :system do
   context 'お客様情報が登録できるとき' do 
     it 'ログインしたユーザーはお客様登録できる' do
       # ログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @user.email
-      fill_in 'パスワード', with: @user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@user)
       # お客様登録ページボタンがあることを確認する
       expect(page).to have_content('お客様新規登録')
       # お客様登録ページに移動する
@@ -55,11 +51,7 @@ RSpec.describe "お客様詳細", type: :system do
 
   it 'ログインしたユーザーはお客様の詳細ページに遷移できる' do
     # ログインする
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: @customer.user.email
-    fill_in 'パスワード', with: @customer.user.password
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@customer.user)
     # お客様のリンクを押すと詳細ページが表示されることを確認する
     expect(page).to have_link "#{@customer.name}", href: customer_path(@customer)
     # 詳細ページに移動する
@@ -92,11 +84,7 @@ RSpec.describe "お客様編集", type: :system do
   context 'お客様を編集できるとき' do 
     it 'ログインしたユーザーは自分が登録したお客様を編集できる' do
       # ログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @customer.user.email
-      fill_in 'パスワード', with: @customer.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@customer.user)
       # お客様詳細ページへ移動する
       visit customer_path(@customer)
       # お客様の編集ボタンがあることを確認する
@@ -143,7 +131,7 @@ RSpec.describe "お客様編集", type: :system do
 
   context 'お客様情報が編集できないとき' do
     it 'ログインしていないとお客様編集画面には遷移できない' do
-      # ログイン画面にいる
+      # ログイン画面に移動する
       visit new_user_session_path
       # ログイン画面に編集ボタンが無いことを確認する
       expect(page).to have_no_content('お客様編集')
@@ -154,29 +142,25 @@ end
 
 RSpec.describe "お客様削除", type: :system do
   before do
-    @customer1 = FactoryBot.create(:customer)
+    @customer = FactoryBot.create(:customer)
   end
 
   context 'お客様の削除ができるとき' do
     it 'ログインしたユーザーは自分が登録したお客様の削除ができる' do
       # ログインする
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @customer1.user.email
-      fill_in 'パスワード', with: @customer1.user.password
-      find('input[name="commit"]').click
-      expect(current_path).to eq(root_path)
+      sign_in(@customer.user)
       # お客様詳細ページへ移動する
-      visit customer_path(@customer1)
+      visit customer_path(@customer)
       # お客様削除ボタンがあることを確認する
-      expect(page).to have_link 'お客様削除', href: customer_path(@customer1)
+      expect(page).to have_link 'お客様削除', href: customer_path(@customer)
       # お客様を削除するとレコードの数が1減ることを確認する
       expect{
-        find_link('お客様削除', href: customer_path(@customer1)).click
+        find_link('お客様削除', href: customer_path(@customer)).click
       }.to change { Customer.count }.by(-1)
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # トップページにはお客様1の内容が存在しないことを確認する
-      expect(page).to have_no_content("#{@customer1.name}")
+      expect(page).to have_no_content("#{@customer.name}")
     end
   end
 
@@ -185,7 +169,7 @@ RSpec.describe "お客様削除", type: :system do
       # ログインページに移動する
       visit new_user_session_path
       # ログインページにお客様削除ボタンがないことを確認する
-      expect(page).to have_no_link 'お客様削除', href: customer_path(@customer1)
+      expect(page).to have_no_link 'お客様削除', href: customer_path(@customer)
     end
   end
 end

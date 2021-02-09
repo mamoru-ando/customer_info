@@ -2,23 +2,19 @@ require 'rails_helper'
 
 RSpec.describe 'オーダー入力', type: :system do
   before do
-    @customer1 = FactoryBot.create(:customer)
+    @customer = FactoryBot.create(:customer)
     @order = FactoryBot.build(:order)
   end
 
   it 'ログインしたユーザーはお客様詳細ページでオーダー情報を入力できる' do
     # ログインする
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: @customer1.user.email
-    fill_in 'パスワード', with: @customer1.user.password
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@customer.user)
     # お客様詳細ページへ遷移する
-    visit customer_path(@customer1)
+    visit customer_path(@customer)
     # オーダー情報入力ボタンがあることを確認する
-    expect(page).to have_link 'オーダー情報入力', href: new_customer_order_path(@customer1)
+    expect(page).to have_link 'オーダー情報入力', href: new_customer_order_path(@customer)
     # オーダー入力ページへ遷移する
-    visit new_customer_order_path(@customer1)
+    visit new_customer_order_path(@customer)
     # フォームに情報を入力する
     fill_in '来店日', with: @order.date
     fill_in '来店人数', with: @order.people
@@ -32,7 +28,7 @@ RSpec.describe 'オーダー入力', type: :system do
       find('input[name="commit"]').click
     }.to change { Order.count }.by(1)
     # 詳細ページにリダイレクトされることを確認する
-    expect(current_path).to eq(customer_path(@customer1))
+    expect(current_path).to eq(customer_path(@customer))
     # 詳細ページに先程のオーダー情報が含まれていることを確認する
     expect(page).to have_content(@order.date)
   end
@@ -41,7 +37,7 @@ RSpec.describe 'オーダー入力', type: :system do
     # ログインページへ移動する
     visit new_user_session_path
     # ログインページにはオーダー情報入力ボタンがないことを確認する
-    expect(page).to have_no_link 'オーダー情報入力', href: new_customer_order_path(@customer1)
+    expect(page).to have_no_link 'オーダー情報入力', href: new_customer_order_path(@customer)
   end
 end
 
@@ -53,11 +49,7 @@ RSpec.describe 'オーダー編集', type: :system do
 
   it 'ログインしていればオーダー情報を編集できる' do
     # ログインする
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: @order.customer.user.email
-    fill_in 'パスワード', with: @order.customer.user.password
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@order.customer.user)
     # お客様詳細ページへ遷移する
     visit customer_path(@order.customer_id)
     # オーダー編集ボタンがあることを確認する
@@ -114,11 +106,7 @@ RSpec.describe 'オーダー削除', type: :system do
 
   it 'ログインしているとオーダー情報が削除できる' do
     # ログインページへ移動する
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: @order.customer.user.email
-    fill_in 'パスワード', with: @order.customer.user.password
-    find('input[name="commit"]').click
-    expect(current_path).to eq(root_path)
+    sign_in(@order.customer.user)
     # お客様詳細ページへ遷移する
     visit customer_path(@order.customer_id)
     # オーダー削除ボタンがあることを確認する
