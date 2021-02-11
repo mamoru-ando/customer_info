@@ -13,7 +13,7 @@
       <%= link_to  edit_customer_path(@customer.id), class: 'link_white' do %>
         <button class="btn btn-primary btn-sm mr-2">お客様編集</button>
       <% end %>
-      <%= link_to customer_path(@customer.id), method: :delete, class: 'link_white' do %>
+      <%= link_to customer_path(@customer.id), method: :delete, data: { confirm: "削除しますか？" }, class: 'link_white' do %>
         <button class="btn btn-danger btn-sm">お客様削除</button>
       <% end %>
     </div>
@@ -76,7 +76,7 @@
           <%= link_to edit_customer_order_path(@customer.id, order.id), class: 'link_white' do %>
             <button class="btn btn-primary btn-sm">編集</button>
           <% end %>
-          <%= link_to customer_order_path(@customer.id, order.id), method: :delete, class: 'link_white' do %>
+          <%= link_to customer_order_path(@customer.id, order.id), method: :delete, data: { confirm: "削除しますか？" }, class: 'link_white' do %>
             <button class="btn btn-danger btn-sm ml-2">削除</button>
           <% end %>
         </div>
