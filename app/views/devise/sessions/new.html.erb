@@ -8,7 +8,7 @@
         <label for="user_email">メールアドレス</label>
         <span class="badge badge-danger">必須</span>
       </div>
-      <%= f.email_field :email, placeholder:"PC・携帯どちらでも可", autofocus: true %>
+      <%= f.email_field :email, class: "memo", placeholder:"PC・携帯どちらでも可", autofocus: true %>
     </div>
 
     <div class="field">
@@ -16,7 +16,7 @@
         <label for="user_password">パスワード</label>
         <span class="badge badge-danger">必須</span>
       </div>
-      <%= f.password_field :password, placeholder:"半角英数6文字以上" %>
+      <%= f.password_field :password, class: "memo", placeholder:"半角英数6文字以上" %>
     </div>
 
     <div class="mt-3">
