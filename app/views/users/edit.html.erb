@@ -1,5 +1,5 @@
-<div class="container mb-5">
-  <h2>ユーザー編集 <%= current_user.name %> 様</h2>
+<div class="container mb-5 mt-2">
+  <h2><%= current_user.name %> 様</h2>
 
   <%= form_with model: current_user, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
@@ -20,7 +20,7 @@
 
 
   <div class="mt-2">
-    <%= f.label 'パスワード' %> <span class="badge badge-danger">必須</span> <i>(現在または新たなパスワードを入力してください。)</i><br />
+    <%= f.label 'パスワード' %> <span class="badge badge-danger">必須</span> <i>(変更する場合は新たなパスワードを入力してください。)</i><br />
     <%= f.password_field :password, autocomplete: "new-password", placeholder:"6文字以上半角英数" %>
   </div>
 
