@@ -35,9 +35,9 @@
   </div>
   <% end %>
 
-  <%# <div> %>
-    <%# <%= link_to user_registration_path(current_user), method: :delete, class: 'link_white' do %> %>
-      <%# <bottom type="button" class="btn btn-outline-danger btn-sm">ユーザー削除</bottom> %>
-    <%# <% end %> %>
-  <%# </div> %>
+  <div>
+    <%= link_to user_registration_path(current_user), method: :delete, class: 'link_white', data: { confirm: "ユーザーを削除しますか？" } do %>
+      <bottom type="button" class="btn btn-outline-danger btn-sm mt-3">ユーザー削除</bottom>
+    <% end %>
+  </div>
 </div>

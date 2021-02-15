@@ -12,3 +12,7 @@ ja:
        table: テーブル
        pay: 支払い金額
 
+ja:
+  devise:  
+    failure:  
+      deleted_account: "このアカウントは既に削除されています。" 
