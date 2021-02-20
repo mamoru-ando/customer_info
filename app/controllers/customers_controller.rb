@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = Customer.eager_load(:user, :orders).where(user_id: current_user.id).order(updated_at: "DESC")
+    @customers = Customer.eager_load(:user, :orders).where(user_id: current_user.id).order(updated_at: 'DESC')
   end
 
   def new
@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @orders = Order.where(customer_id: @customer.id).order("date DESC")
+    @orders = Order.where(customer_id: @customer.id).order('date DESC')
   end
 
   def edit
@@ -41,20 +41,21 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @results  = @keyword.result.order("updated_at DESC")
+    @results = @keyword.result.order('updated_at DESC')
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :name_kana, :sex_id, 
+    params.require(:customer).permit(:name, :name_kana, :sex_id,
                                      :tell1, :tell2, :email, :address, :memo, :appearance).merge(user_id: current_user.id)
   end
 
   def search_customer
     @sex = Sex.all
-    if params[:q] != nil
-      params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'] = params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'].split(/[\p{blank}\s]+/)
+    if !params[:q].nil?
+      params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'] =
+        params[:q]['name_or_name_kana_or_tell1_or_memo_or_appearance_cont_all'].split(/[\p{blank}\s]+/)
       @keyword = Customer.includes(:orders).ransack(params[:q])
     else
       @keyword = Customer.includes(:orders).ransack(params[:q])
@@ -64,5 +65,4 @@ class CustomersController < ApplicationController
   def set_customer
     @customer = Customer.find(params[:id])
   end
-
 end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :customer do
-    name                  { "竈門　炭治郎" }
-    name_kana             { "カマド タンジロウ" }
+    name                  { '竈門　炭治郎' }
+    name_kana             { 'カマド タンジロウ' }
     sex_id                { Faker::Number.within(range: 0..3) }
     tell1                 { Faker::PhoneNumber.subscriber_number(length: 11) }
     email                 { Faker::Internet.email }

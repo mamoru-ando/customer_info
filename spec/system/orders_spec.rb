@@ -24,9 +24,9 @@ RSpec.describe 'オーダー入力', type: :system do
     fill_in '支払い金額', with: @order.pay
     fill_in 'メモ', with: @order.order_memo
     # 登録するとOrderモデルのカウントが1上がることを確認する
-    expect{
+    expect  do
       find('input[name="commit"]').click
-    }.to change { Order.count }.by(1)
+    end.to change { Order.count }.by(1)
     # 詳細ページにリダイレクトされることを確認する
     expect(current_path).to eq(customer_path(@customer))
     # 詳細ページに先程のオーダー情報が含まれていることを確認する
@@ -40,7 +40,6 @@ RSpec.describe 'オーダー入力', type: :system do
     expect(page).to have_no_link 'オーダー情報入力', href: new_customer_order_path(@customer)
   end
 end
-
 
 RSpec.describe 'オーダー編集', type: :system do
   before do
@@ -59,10 +58,10 @@ RSpec.describe 'オーダー編集', type: :system do
     # 登録したオーダー情報が入力されていることを確認する
     expect(
       find('#order_date').value
-    ).to eq("#{@order.date}")
+    ).to eq(@order.date.to_s)
     expect(
       find('#order_people').value
-    ).to eq("#{@order.people}")
+    ).to eq(@order.people.to_s)
     expect(
       find('#order_table').value
     ).to eq(@order.table)
@@ -74,16 +73,16 @@ RSpec.describe 'オーダー編集', type: :system do
     ).to eq(@order.food)
     expect(
       find('#order_pay').value
-    ).to eq("#{@order.pay}")
+    ).to eq(@order.pay.to_s)
     expect(
       find('#order_order_memo').value
     ).to eq(@order.order_memo)
     # オーダーを編集する
     fill_in 'order_order_memo', with: "#{@order.order_memo}+編集したテキスト"
     # 登録してもOrderモデルのカウントは変わらないことを確認する
-    expect{
+    expect  do
       find('input[name="commit"]').click
-    }.to change { Order.count }.by(0)
+    end.to change { Order.count }.by(0)
     # お客様詳細ページへ遷移したことを確認する
     expect(current_path).to eq(customer_path(@order.customer))
     # 編集した内容が表示されていることを確認する
@@ -98,7 +97,6 @@ RSpec.describe 'オーダー編集', type: :system do
   end
 end
 
-
 RSpec.describe 'オーダー削除', type: :system do
   before do
     @order = FactoryBot.create(:order)
@@ -112,13 +110,13 @@ RSpec.describe 'オーダー削除', type: :system do
     # オーダー削除ボタンがあることを確認する
     expect(page).to have_link '削除', href: customer_order_path(@order.customer_id, @order.id)
     # お客様を削除するとレコードの数が1減ることを確認する
-    expect{
+    expect do
       find_link('削除', href: customer_order_path(@order.customer_id, @order.id)).click
-    }.to change { Order.count }.by(-1)
+    end.to change { Order.count }.by(-1)
     # お客様詳細ページへ遷移したことを確認する
     expect(current_path).to eq(customer_path(@order.customer_id))
     # 編集した内容が表示されていることを確認する
-    expect(page).to have_no_content("#{@order.date}")
+    expect(page).to have_no_content(@order.date.to_s)
   end
 
   it 'ログインしているとオーダー情報が削除できる' do

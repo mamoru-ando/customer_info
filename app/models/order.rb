@@ -6,5 +6,4 @@ class Order < ApplicationRecord
     validates :people, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
     validates :pay, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
   end
-
 end

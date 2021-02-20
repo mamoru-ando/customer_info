@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   describe 'お客様新規登録' do
     context '新規登録がうまくいくとき' do
-      it "全ての情報がが存在すれば登録できる" do
+      it '全ての情報がが存在すれば登録できる' do
         expect(@customer).to be_valid
       end
       it 'name以外が空欄でも登録できる' do
@@ -27,12 +27,12 @@ RSpec.describe User, type: :model do
       it 'nameが空だと登録できない' do
         @customer.name = ''
         @customer.valid?
-        expect(@customer.errors.full_messages).to include "お名前を入力してください"
+        expect(@customer.errors.full_messages).to include 'お名前を入力してください'
       end
       it 'nameが21文字以上では登録できない' do
         @customer.name = 'あいうえおかきくけこさしすせそたちつてとな'
         @customer.valid?
-        expect(@customer.errors.full_messages).to include "お名前は20文字以内で入力してください"
+        expect(@customer.errors.full_messages).to include 'お名前は20文字以内で入力してください'
       end
     end
   end

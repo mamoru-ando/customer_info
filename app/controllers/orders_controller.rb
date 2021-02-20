@@ -35,11 +35,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:date, :people, :table, :drink, :food, :pay, :order_memo).merge(customer_id: params[:customer_id])
+    params.require(:order).permit(:date, :people, :table, :drink, :food, :pay,
+                                  :order_memo).merge(customer_id: params[:customer_id])
   end
 
   def set_order
     @order = Order.find(params[:id])
   end
-
 end
