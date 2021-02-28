@@ -6,7 +6,8 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mamoru-ando/customer_info)
 
 # アプリケーション概要
-- 店舗におけるお客様情報とオーダー情報の管理ができ、お客様の顔は覚えているが名前を思い出せない状況を解決するアプケーションです。
+- お客様の名前が思い出せなくても大丈夫！<br>
+  お客様の外見的特徴から検索することで、名前が思い出せない状況を解決する顧客管理アプリケーションです。<br>
 
 ![customer](https://user-images.githubusercontent.com/75655307/106693378-ac8bf100-6619-11eb-83e3-6a32ea2759c1.gif)
 ![order](https://user-images.githubusercontent.com/75655307/106693365-a6961000-6619-11eb-9f10-085bad34af67.gif)
