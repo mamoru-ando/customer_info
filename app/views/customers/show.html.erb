@@ -1,4 +1,5 @@
 <div class="container mb-5">
+  <%# お客様詳細情報 %>
   <div class="row mt-2">
     <h1><%= @customer.name%>  様</h1>
   </div>
@@ -68,6 +69,7 @@
         </div>
       </div>
 
+  <%# オーダー一覧 %>
   <div class="col mb-5">
     <% if @orders.present? %>
       <% @orders.each do |order| %>
@@ -117,6 +119,7 @@
         </div>
 
       <% end %>
+    <%# オーダー情報が無い場合 %>
     <% else %>
       <p class="h3 text-center">*** オーダー情報はありません ***</p>
     <% end %>
